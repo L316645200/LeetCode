@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 第 12 天 动态规划.py
+# @File  : 第 12 天 006动态规划.py
 # @Author: Lin
 # @Date  : 2022/2/21 11:59
 

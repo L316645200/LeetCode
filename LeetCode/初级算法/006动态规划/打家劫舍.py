@@ -29,7 +29,7 @@
 # 0 <= nums[i] <= 400
 # 相关标签
 # 数组
-# 动态规划
+# 006动态规划
 from typing import List
 
 

@@ -41,7 +41,7 @@
 # 相关标签
 # 数组
 # 分治
-# 动态规划
+# 006动态规划
 from typing import List
 
 

@@ -30,7 +30,7 @@
 # 0 <= prices[i] <= 104
 # 相关标签
 # 数组
-# 动态规划
+# 006动态规划
 from typing import List
 
 

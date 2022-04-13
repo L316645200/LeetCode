@@ -27,7 +27,7 @@
 # 相关标签
 # 记忆化搜索
 # 数学
-# 动态规划
+# 006动态规划
 
 class Solution:
     def climbStairs(self, n: int) -> int:

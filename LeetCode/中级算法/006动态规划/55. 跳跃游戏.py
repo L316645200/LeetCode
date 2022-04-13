@@ -18,4 +18,19 @@
 # 提示：
 # 1 <= nums.length <= 3 * 104
 # 0 <= nums[i] <= 105
+from typing import List
+
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        num = 0
+        for i in range(len(nums)-1):
+            num = max(num, nums[i] + i)
+            if num <= i:
+                return False
+        return True
+
+
+s = Solution()
+t = s.canJump([3,2,1,0,4])
 

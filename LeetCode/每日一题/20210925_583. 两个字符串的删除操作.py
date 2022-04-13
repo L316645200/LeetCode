@@ -17,7 +17,7 @@
 # 给定单词的长度不超过500。
 # 给定单词中的字符只含有小写字母。
 
-# 动态规划 最长公共子序列
+# 006动态规划 最长公共子序列
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         n1, n2 = len(word1)+1, len(word2)+1
@@ -30,7 +30,7 @@ class Solution:
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         return n1 + n2 - dp[-1][-1] * 2 - 2
 
-# 动态规划 直接求删除
+# 006动态规划 直接求删除
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         n1, n2 = len(word1)+1, len(word2)+1
