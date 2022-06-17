@@ -61,7 +61,7 @@ class Solution:
                         r = mid - 1
                     else:
                         l = mid + 1
-                    print(n, d, l, r, mid ,loc)
+                    print(n, d, l, r, mid, loc)
                 d[loc] = n
             print(d)
         return len(d)

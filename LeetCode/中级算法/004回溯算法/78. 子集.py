@@ -45,13 +45,14 @@ class Solution:
         res = []
         n = len(nums)
         def hastack(arr, index):
+            print(arr, index)
             res.append(arr)
             for i in range(index, n):
                 hastack(arr + [nums[i]], i + 1)
         hastack([], 0)
         return res
 s = Solution()
-s.subsets([1, 2, 3])
+# s.subsets([1, 2, 3])
 
 def subsequences(arr):
     sub = []

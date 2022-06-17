@@ -24,7 +24,6 @@
 # 1 <= nums.length <= 6
 # -10 <= nums[i] <= 10
 # nums 中的所有整数 互不相同
-# 通过次数505,423提交次数643,970
 from itertools import permutations
 from typing import List
 
