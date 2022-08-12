@@ -43,7 +43,6 @@ class Solution:
             for i in range(len(nums)):
                 hastack(nums[:i] + nums[i+1:], tmp + [nums[i]])
         hastack(nums, [])
-        print(res)
         return res
 
 s = Solution()

@@ -211,31 +211,31 @@ r = s.searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
 print(r)
 
 
-def guess(m):
-    if m == 6:
-        return 0
-    elif m > 6:
-        return 1
-    else:
-        return -1
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        left, right = 1, n
-        while left <= right:
-            mid = (left + right) // 2
-            r = guess(mid)
-            print(left, right, mid, r)
-            if r == 0:
-                return mid
-            elif r == 1:
-                right = mid - 1
-            else:
-                left = mid + 1
-
-s = Solution()
-r = s.guessNumber(10)
-print(r)
+# def guess(m):
+#     if m == 6:
+#         return 0
+#     elif m > 6:
+#         return 1
+#     else:
+#         return -1
+#
+# class Solution:
+#     def guessNumber(self, n: int) -> int:
+#         left, right = 1, n
+#         while left <= right:
+#             mid = (left + right) // 2
+#             r = guess(mid)
+#             print(left, right, mid, r)
+#             if r == 0:
+#                 return mid
+#             elif r == 1:
+#                 right = mid - 1
+#             else:
+#                 left = mid + 1
+#
+# s = Solution()
+# r = s.guessNumber(10)
+# print(r)
 
 
 
