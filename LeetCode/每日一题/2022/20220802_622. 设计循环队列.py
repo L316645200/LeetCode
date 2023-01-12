@@ -105,4 +105,84 @@ class MyCircularQueue:
 # param_3 = obj.Front()
 # param_4 = obj.Rear()
 # param_5 = obj.isEmpty()
-# param_6 = obj.isFull()
+# param_6 = obj.isFull(
+
+
+class MyCircularQueue:
+    def __init__(self, k: int):
+        self.elements = [0] * (k + 1)
+        self.front = self.rear = 0
+        self.k = k
+
+    def enQueue(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        self.elements[self.rear] = value
+        self.rear = (self.rear + 1) % (self.k + 1)
+        return True
+
+    def deQueue(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.front = (self.front + 1) % (self.k + 1)
+        return True
+
+    def Front(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.elements[self.front]
+
+    def Rear(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.elements[self.rear-1]
+
+    def isEmpty(self) -> bool:
+        return self.front == self.rear
+
+    def isFull(self) -> bool:
+        return self.front == (self.rear + 1) % (self.k + 1)
+
+
+m = MyCircularQueue(3)
+r = m.enQueue(1)
+print(r)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

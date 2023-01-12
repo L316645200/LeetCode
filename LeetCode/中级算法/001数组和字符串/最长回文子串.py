@@ -81,7 +81,6 @@ class Solution:
                 begin, end = left2, right2
         return s[begin: end+1]
 
-
 s = Solution()
 res = s.longestPalindrome('beeeaaaaabb')
 print(res)

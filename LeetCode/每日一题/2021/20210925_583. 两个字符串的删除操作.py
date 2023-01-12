@@ -29,7 +29,8 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         return n1 + n2 - dp[-1][-1] * 2 - 2
-
+s = Solution()
+s.minDistance('sea', 'eat')
 # 006动态规划 直接求删除
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:

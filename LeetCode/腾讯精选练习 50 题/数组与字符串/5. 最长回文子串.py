@@ -40,7 +40,25 @@ class Solution:
         m2, arr2 = palindrome(1)
         return arr1 if m1 > m2 else arr2
 
+class Solution:
+    def center(self, s, left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return left + 1, right - 1
 
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        begin = 0
+        end = 0
+        for i in range(n):
+            left1, right1 = self.center(s, i, i)
+            left2, right2 = self.center(s, i, i + 1)
+            if right1 - left1 > end - begin:
+                begin, end = left1, right1
+            if right2 - left2 > end - begin:
+                begin, end = left2, right2
+        return s[begin: end+1]
 s = Solution()
 r = s.longestPalindrome('a')
 print(r)

@@ -30,11 +30,11 @@ from functools import reduce
 
 class Solution:
     def isHappy(self, n: int) -> bool:
-        se = set()
+        seen = set()
         while n != 1:
             n = sum(map(lambda x: x*x, [int(i) for i in str(n)]))
-            if n not in se:
-                se.add(n)
+            if n not in seen:
+                seen.add(n)
             else:
                 return False
         return True

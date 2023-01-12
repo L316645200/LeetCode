@@ -6,6 +6,7 @@
 
 
 import bisect
+import heapq
 from math import gcd
 from typing import List
 
@@ -77,5 +78,346 @@ class Solution:
                 t += int(i)
             num = t
         return num
+# s = Solution()
+# s.addDigits(10)
+
+
+# 673. 最长递增子序列的个数
+# 给定一个未排序的整数数组 nums ， 返回最长递增子序列的个数 。
+# 注意 这个数列必须是 严格 递增的。
+# 示例 1:
+# 输入: [1,3,5,4,7]
+# 输出: 2
+# 解释: 有两个最长递增子序列，分别是 [1, 3, 4, 7] 和[1, 3, 5, 7]。
+# 示例 2:
+# 输入: [2,2,2,2,2]
+# 输出: 5
+# 解释: 最长递增子序列的长度是1，并且存在5个子序列的长度为1，因此输出5。
+# 提示: 
+# 1 <= nums.length <= 2000
+# -106 <= nums[i] <= 106
+
+
+
+class Solution:
+    def findNumberOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1] * n
+        g = [1] * n
+        ans = 0
+        max_len = 0
+        for i in range(n):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    if dp[i] < dp[j] + 1:
+                        dp[i] = dp[j] + 1
+                        g[i] = g[j]
+                    elif dp[i] == dp[j] + 1:
+                        g[i] += g[j]
+            if dp[i] > max_len:
+                max_len = dp[i]
+                ans = g[i]
+            elif dp[i] == max_len:
+                ans += g[i]
+        return ans
+# s = Solution()
+# s.findNumberOfLIS([1,3,5,5,7])
+
+
+
+
+
+
+
+# 72. 编辑距离
+# 给你两个单词 word1 和 word2， 请返回将 word1 转换成 word2 所使用的最少操作数  。
+# 你可以对一个单词进行如下三种操作：
+# 插入一个字符
+# 删除一个字符
+# 替换一个字符
+# 示例 1：
+# 输入：word1 = "horse", word2 = "ros"
+# 输出：3
+# 解释：
+# horse -> rorse (将 'h' 替换为 'r')
+# rorse -> rose (删除 'r')
+# rose -> ros (删除 'e')
+# 示例 2：
+# 输入：word1 = "intention", word2 = "execution"
+# 输出：5
+# 解释：
+# intention -> inention (删除 't')
+# inention -> enention (将 'i' 替换为 'e')
+# enention -> exention (将 'n' 替换为 'x')
+# exention -> exection (将 'n' 替换为 'c')
+# exection -> execution (插入 'u')
+# 提示：
+# 0 <= word1.length, word2.length <= 500
+# word1 和 word2 由小写英文字母组成
+
+
+# dp[i, j]
+# 插入一个字符，即在word1插入一个字符，使word1[i]==word2[j],
+# 即dp[i-1][j] + 1
+# 删除一个字符，即在word1删除一个字符，等价在word2中插入一个字符，使word1[i]==word2[j],
+# 即dp[i][j-1] + 1
+# 替换一个字符，即在dp[i-1][j-1]的基础上各插入一个字符，使word1[i]==word2[j],
+# 即dp[i-1][j-1] + 1，如果word1[i]==word2[j]本就成立，则dp[i-1][j-1]
+
+
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        n1, n2 = len(word1) + 1, len(word2) + 1
+
+        dp = [[max(i, j) for i in range(n2)] for j in range(n1)]
+
+        for i in range(1, n1):
+            for j in range(1, n2):
+                if word1[i-1] == word2[j-1]:
+                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1] - 1) + 1
+                else:
+                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+
+        return dp[n1-1][n2-1]
+
+
+
+# s = Solution()
+# s.minDistance(word1 = "horse", word2 = "ros")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 322. 零钱兑换
+# 给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
+# 计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
+# 你可以认为每种硬币的数量是无限的。
+# 示例 1：
+# 输入：coins = [1, 2, 5], amount = 11
+# 输出：3
+# 解释：11 = 5 + 5 + 1
+# 示例 2：
+# 输入：coins = [2], amount = 3
+# 输出：-1
+# 示例 3：
+# 输入：coins = [1], amount = 0
+# 输出：0
+# 提示：
+# 1 <= coins.length <= 12
+# 1 <= coins[i] <= 231 - 1
+# 0 <= amount <= 104
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [0] + [float('inf')] * amount
+
+        for coin in coins:
+            print(coin)
+            for i in range(coin, amount+1):
+                dp[i] = min(dp[i], dp[i-coin] + 1)
+                print(dp)
+
+
+# s = Solution()
+# s.coinChange([5,2,1], 11)
+
+class Solution:
+    def getKthMagicNumber(self, k: int) -> int:
+        factors = [3, 5, 7]
+        seen = {1}
+        heap = [1]
+
+        for i in range(k - 1):
+            curr = heapq.heappop(heap)
+
+            print('curr', curr)
+            for factor in factors:
+                if (nxt := curr * factor) not in seen:
+                    seen.add(nxt)
+                    heapq.heappush(heap, nxt)
+
+            print(seen)
+            print('heap', heap)
+        return heapq.heappop(heap)
+
+
+class Solution:
+    def getKthMagicNumber(self, k: int) -> int:
+        dp = [0] * (k+1)
+
+
+class Solution:
+    def canTransform(self, start: str, end: str) -> bool:
+        i, j = 0, 0
+        n = len(start)
+        while i < n and j < n:
+            while i < n and start[i] == 'X':
+                i += 1
+            while j < n and end[j] == 'X':
+                j += 1
+
+            if i < n and j < n:
+                if start[i] != end[j]:
+                    return False
+                c = start[i]
+                if (c == 'R' and i > j) or (c == 'L' and i < j):
+                    return False
+
+                i += 1
+                j += 1
+
+        while i < n:
+            if start[i] != 'X':
+                return False
+            i += 1
+        while j < n:
+            if end[j] != 'X':
+                return False
+            j += 1
+        return True
+
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        def find(x):
+            if p[x] != x:
+                p[x] = find(p[x])
+            return p[x]
+
+        p = list(range(n))
+        print(p)
+        print()
+
+        for u, v in edges:
+            print(p, u, v)
+            p[find(u)] = find(v)
+            print(p, )
+        return find(source) == find(destination)
+
 s = Solution()
-s.addDigits(10)
+s.validPath(n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
