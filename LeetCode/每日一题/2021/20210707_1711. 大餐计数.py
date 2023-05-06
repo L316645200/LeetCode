@@ -30,6 +30,10 @@
 #
 # 1 <= deliciousness.length <= 105
 # 0 <= deliciousness[i] <= 220
+import collections
+from typing import List
+
+
 class Solution:
     def countPairs(self, deliciousness: List[int]) -> int:
         mod = 10 ** 9 + 7
@@ -41,3 +45,6 @@ class Solution:
                 n += c[p-d]
             c[d] += 1
         return n % mod
+
+
+

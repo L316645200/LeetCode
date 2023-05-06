@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 1143. 最长公共子序列.py
+# @File  : 1143. .py
 # @Author: Lin
 # @Date  : 2021/9/25 14:40
 # 中等
