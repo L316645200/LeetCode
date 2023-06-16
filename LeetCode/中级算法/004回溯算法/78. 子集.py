@@ -33,10 +33,14 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = [[]]
         for i in nums:
-            res = res + [[i] + num for num in res]
             print(i, [num for num in res])
+
+            res = res + [[i] + num for num in res]
         return res
 
+arr =[1, 2, 3]
+s = Solution()
+s.subsets(arr)
 
 
 # 自己写的

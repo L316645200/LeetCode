@@ -48,6 +48,7 @@ class Solution:
             else:
                 right = mid - 1
 
+
 s = Solution()
 r = s.findMin([5,1,2,3,4])
 print(r)

@@ -408,9 +408,61 @@ s = Solution()
 r = s.balancedString("WQWRQQQW")
 print(r)
 
+print()
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(startTime)
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda p: p[1])
+        print(jobs)
+        dp = [0] * (n + 1)
+        for i in range(1, n + 1):
+            # 二分查找小于当前开始时间的结束时间
+            k = bisect.bisect_right(jobs, jobs[i - 1][0], hi=i, key=lambda p: p[1])
+            print(jobs, jobs[i - 1][0], [i[1] for i in jobs[:i]])
+            # 动态规划  (dp[i] 对应jobs[i-1])
+            dp[i] = max(dp[i - 1], dp[k] + jobs[i - 1][2])
+            print(dp)
+        # return dp[n]
+
+
+class Solution:
+    def maximumRemovals(self, s: str, p: str, removable: List[int]) -> int:
+        ns, np = len(s), len(p)
+        n = len(removable)
+
+        def check(k):
+            state = [True] * ns
+            for i in range(k):
+                state[removable[i]] = False
+            j = 0
+            for i in range(ns):
+                if state[i] and s[i] == p[j]:
+                    j += 1
+                    if j == np:
+                        return True
+            return False
+
+
+        left, right = 0, n
+        res = 0
+        while left <= right:
+            mid = (left + right) // 2
+            if check(mid):
+                res = max(res, mid)
+                left = mid + 1
+            else:
+                right = mid - 1
+        return res
 
 
 
+
+s = Solution()
+s.maximumRemovals(s="abcab", p="abc", removable=[0, 1, 2, 3, 4])
+
+# s.maximumRemovals(s = "abcbddddd", p = "abcd", removable = [3,2,1,4,5,6])
+
+# s.maximumRemovals(s = "qlevcvgzfpryiqlwy", p = "qlecfqlw", removable = [12,5])
 
 
 

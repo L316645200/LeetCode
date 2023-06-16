@@ -30,6 +30,7 @@
 # 如果员工 i 没有下属，informTime[i] == 0 。
 # 题目 保证 所有员工都可以收到通知。
 from collections import defaultdict
+from functools import cache
 from typing import List
 
 
@@ -52,7 +53,8 @@ class Solution:
         return max(ans)
 
 s = Solution()
-s.numOfMinutes(n = 15, headID = 0, manager = [-1,0,0,1,1,2,2,3,3,4,4,5,5,6,6], informTime = [1,1,1,1,1,1,1,0,0,0,0,0,0,0,0])
+r = s.numOfMinutes(n = 15, headID = 0, manager = [-1,0,0,1,1,2,2,3,3,4,4,5,5,6,6], informTime = [1,1,1,1,1,1,1,0,0,0,0,0,0,0,0])
+print(r)
 
 
 class Solution:
@@ -67,3 +69,6 @@ class Solution:
             return dfs(manager[cur]) + informTime[manager[cur]]
         # 对所有节点遍历，返回最长时间
         return max(dfs(i) for i in range(n))
+s = Solution()
+r= s.numOfMinutes(n = 15, headID = 0, manager = [-1,0,0,1,1,2,2,3,3,4,4,5,5,6,6], informTime = [1,1,1,1,1,1,1,0,0,0,0,0,0,0,0])
+print(r)

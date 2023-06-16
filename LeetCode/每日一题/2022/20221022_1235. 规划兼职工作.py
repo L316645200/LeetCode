@@ -34,29 +34,15 @@ from typing import List
 
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        n = len(startTime)
-        jobs = sorted(zip(startTime, endTime, profit), key=lambda p: p[1])
-        print(jobs)
+        n = len(profit)
         dp = [0] * (n + 1)
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda x: x[1])
         for i in range(1, n + 1):
-            k = bisect_right(jobs, jobs[i - 1][0], hi=i, key=lambda p: p[1])
-            print(jobs, jobs[i-1][0], i)
-            print(k)
-            # dp[i] = max(dp[i - 1], dp[k] + jobs[i - 1][2])
-        # return dp[n]
-
-class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        n = len(startTime)
-        jobs = sorted(zip(startTime, endTime, profit), key=lambda p: p[1])
-        dp = [0] * (n + 1)
-        for i in range(1, n + 1):
-            k = bisect_right(jobs, jobs[i - 1][0], hi=i, key=lambda p: p[1])
-            print(jobs, jobs[i-1][0], i)
-            print(k)
-            dp[i] = max(dp[i - 1], dp[k] + jobs[i - 1][2])
+            k = bisect_right(jobs, jobs[i - 1][0], hi=i, key=lambda x: x[1])
+            dp[i] = max(dp[i-1], dp[k] + jobs[i-1][2])
         return dp[n]
 
-
 s = Solution()
-s.jobScheduling(startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70])
+# s.jobScheduling(startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70])
+
+s.jobScheduling(startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60])

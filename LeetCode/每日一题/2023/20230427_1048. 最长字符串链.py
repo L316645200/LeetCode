@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 20230427_.py
+# @File  : 20230427_1048. 最长字符串链.py
 # @Author: Lin
 # @Date  : 2023/4/27 10:33
 
