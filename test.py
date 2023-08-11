@@ -300,8 +300,7 @@ class Solution:
             return p[x]
 
         p = list(range(n))
-        print(p)
-        print()
+
 
         for u, v in edges:
             print(p, u, v)
@@ -309,8 +308,8 @@ class Solution:
             print(p, )
         return find(source) == find(destination)
 
-s = Solution()
-s.validPath(n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2)
+# s = Solution()
+# s.validPath(n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2)
 
 
 
@@ -369,7 +368,7 @@ s.validPath(n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2)
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 
-print()
+
 class Solution:
     def balancedString(self, s: str) -> int:
         cnt = Counter(s)
@@ -404,11 +403,11 @@ class Solution:
 
 
 
-s = Solution()
-r = s.balancedString("WQWRQQQW")
-print(r)
+# s = Solution()
+# r = s.balancedString("WQWRQQQW")
+# print(r)
 
-print()
+# print()
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
         n = len(startTime)
@@ -457,8 +456,8 @@ class Solution:
 
 
 
-s = Solution()
-s.maximumRemovals(s="abcab", p="abc", removable=[0, 1, 2, 3, 4])
+# s = Solution()
+# s.maximumRemovals(s="abcab", p="abc", removable=[0, 1, 2, 3, 4])
 
 # s.maximumRemovals(s = "abcbddddd", p = "abcd", removable = [3,2,1,4,5,6])
 
@@ -469,25 +468,72 @@ s.maximumRemovals(s="abcab", p="abc", removable=[0, 1, 2, 3, 4])
 
 
 
+# -*- coding: utf-8 -*-
+# @Author: fangbei
+# @Date:   2017-08-26
+#
+# import pandas as pd
+#
+# # 网站提示最大可查询90天记录，实测可查三个自然月（例如7-9月共计92天也可），为减少查询次数本例按季度查询
+# date = {'1q': ['01-01', '03-31'], '2q': ['04-01', '06-30'], '3q': ['07-01', '09-30'], '4q': ['10-01', '12-31']}
+#
+# rate = []   # 定义一个空列表
+# for year in range(2023, 2024):   # 此示例可实现获取2019年至2021年的汇率中间价数据，年份可根据需求自定义，留意最后一个数字在截止年上加1
+#     for i in range(3, 4):        # 从1q至4q循环
+#         s = f'{year}-' + date[f'{i}q'][0]   # 构造查询开始日期startDate
+#         e = f'{year}-' + date[f'{i}q'][1]   # 构造查询结束日期endDate
+#         # 构造查询链接
+#         url = f'http://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do?startDate={s}&endDate={e}&queryYN=true'
+#         print(url)
+#         q = pd.read_html(url)          # 获取查询页面的汇率数据表
+#         print(q)
+#         print(len(q))
+#
+#         rate.append(q)                      # 将获取的当季度数据表追加至rate列表
+# df = pd.concat(rate)                        # 纵向合并列表中的各表至DateFrame
+#
+# df = df.sort_values(by='日期', ascending=[True])  # 数据排序。升序ascending=[True]为默认设置，可省略，如需降序，改为ascending=[False]
+# print(df)
+# # df.to_excel('rate.xlsx', index=False)             # 保存数据至excel文件，文件路径为代码所在当前路径，其他路径可根据需求自定义
+#
+#
 
 
 
 
 
 
+class Solution:
+    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
+        obstacles = set([(i[0], i[1]) for i in obstacles])
+        direction = [[0,1],[1,0],[0,-1],[-1,0]]
+        n = 0
+        coordinate  = (0, 0)
+        res = 0
+        for command in commands:
+            if command == -1:
+                n += 1
+            elif command == -2:
+                n -= 1
+            else:
+                x, y = direction[n%4]
+                for i in range(command):
+                    next = (coordinate[0] + x, coordinate[1] + y)
+                    if next in obstacles:
+                        break
+                    coordinate = next
+                    res = max(res, coordinate[0] ** 2 + coordinate[1] ** 2)
+        return res
+
+
+s = Solution()
+# s.robotSim(commands = [4,-1,4,-2,4], obstacles = [[2,4]])
 
 
 
+# s.robotSim(commands = [4,-1,3], obstacles = [])
 
-
-
-
-
-
-
-
-
-
+s.robotSim([6,-1,-1,6], obstacles = [])
 
 
 
