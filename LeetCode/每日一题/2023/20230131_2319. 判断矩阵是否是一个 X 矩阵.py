@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 20230131_2319. 判断矩阵是否是一个 X 矩阵.py
+# @File  : 20230131_2319. 判断矩阵是否是一个 X 2、矩阵.py
 # @Author: Lin
 # @Date  : 2023/1/31 9:28
 

@@ -40,7 +40,9 @@ class Solution:
         n = len(mat)
         total = 0
         for i in range(n):
+            # mat[i][i] 主对角线元素 mat[i][n-i-1] 副对角线元素
             total += mat[i][i] + mat[i][n-i-1]
+        # 如果n是奇数，主对角线和副对角线存在交点
         if n % 2 == 1:
             total -= mat[n//2][n//2]
         return total
