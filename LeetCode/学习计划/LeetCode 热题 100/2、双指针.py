@@ -128,6 +128,68 @@ s = Solution()
 s.threeSum(nums = [-1,0,1,2,-1,-4])
 
 
+"""42. 接雨水
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+示例 1：
+输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
+输出：6
+解释：上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 
+示例 2：
+输入：height = [4,2,0,3,2,5]
+输出：9
+提示：
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105"""
+
+
+
+"""对于下标 i，下雨后水能到达的最大高度等于下标i 两边的最大高度的最小值，
+下标 i 处能接的雨水量等于下标 i处的水能到达的最大高度减去 height[i]
+"""
+
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        # 双指针
+        left, right = 0, n - 1
+        # 双指针经过的最高点
+        left_max, right_max = height[left], height[right]
+        res = 0
+        while left < right:
+            if height[left] <= height[right]:
+                left += 1
+                left_max = max(left_max, height[left])
+                res += left_max - height[left]
+            else:
+                right -= 1
+                right_max = max(right_max, height[right])
+                res += right_max - height[right]
+        return res
+
+s = Solution()
+s.trap(height = [0,1,0,2,1,0,1,3,2,1,2,1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
