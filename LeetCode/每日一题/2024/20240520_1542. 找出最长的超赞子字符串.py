@@ -27,10 +27,25 @@
 s 仅由数字组成"""
 
 
+# TODO 官解，有点复杂，看不懂
 class Solution:
     def longestAwesome(self, s: str) -> int:
-        mp = [str(i) for i in range(10)]
-        print(mp)
+        n = len(s)
+        prefix = {0: -1}
+        ans, sequence = 0, 0
+
+        for j in range(n):
+            digit = ord(s[j]) - ord("0")  # <> int(s[j])
+
+            sequence ^= (1 << digit)
+            if sequence in prefix:
+                ans = max(ans, j - prefix[sequence])
+            else:
+                prefix[sequence] = j
+            for k in range(10):
+                if sequence ^ (1 << k) in prefix:
+                    ans = max(ans, j - prefix[sequence ^ (1 << k)])
+        return ans
 
 
 s = Solution()

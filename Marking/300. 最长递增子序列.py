@@ -34,6 +34,7 @@
 from typing import List
 
 
+# 动态规划 O(n**2)
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         l = len(nums)
@@ -47,6 +48,7 @@ class Solution:
 
 s = Solution()
 s.lengthOfLIS(nums = [10,9,2,5,3,7,101,18])
+# 二分 O(nlogn)
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         d = []

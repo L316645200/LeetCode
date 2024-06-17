@@ -522,9 +522,9 @@ s = Solution()
 s.maxProduct(words = ["aabcw","baz","foo","bar","xtfn","abcdef"])
 
 
-
-
-
+print(2 ^ 2)
+for i in range(20):
+    print(i, i & - i)
 
 
 

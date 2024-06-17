@@ -139,6 +139,105 @@ class Solution:
 
 s = Solution()
 s.rotate(nums = [1,2,3,4,5,6,7], k = 3)
+"""
+238. 除自身以外数组的乘积
+给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积 。
+
+题目数据 保证 数组 nums之中任意元素的全部前缀元素和后缀的乘积都在  32 位 整数范围内。
+
+请 不要使用除法，且在 O(n) 时间复杂度内完成此题。
+
+ 
+
+示例 1:
+
+输入: nums = [1,2,3,4]
+输出: [24,12,8,6]
+示例 2:
+
+输入: nums = [-1,1,0,-3,3]
+输出: [0,0,9,0,0]
+ 
+
+提示：
+
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+保证 数组 nums之中任意元素的全部前缀元素和后缀的乘积都在  32 位 整数范围内
+ 
+
+进阶：你可以在 O(1) 的额外空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组 不被视为 额外空间。）
+"""
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ans = [1] * n
+        t = 1
+        for i in range(1, n):
+            ans[i] = ans[i-1] * nums[i-1]
+        for i in range(n-1, -1, -1):
+            t *= nums[i+1] if i < n - 1 else 1
+            ans[i] = ans[i] * t
+        return ans
+
+
+s = Solution()
+s.productExceptSelf( nums = [-1,1,0,-3,3])
+
+
+"""41. 缺失的第一个正数
+给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
+请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
+示例 1：
+输入：nums = [1,2,0]
+输出：3
+解释：范围 [1,2] 中的数字都在数组中。
+示例 2：
+输入：nums = [3,4,-1,1]
+输出：2
+解释：1 在数组中，但 2 没有。
+示例 3：
+输入：nums = [7,8,9,11,12]
+输出：1
+解释：最小的正数 1 没有出现。
+提示：
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+"""
+
+
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        mp = set(nums)
+        maxi = len(nums) + 1
+        for i in range(1, maxi+1):
+            if i not in mp:
+                return i
+
+
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        for i in range(n):
+            if nums[i] <= 0:
+                nums[i] = n + 1
+
+        for i in range(n):
+            num = abs(nums[i])
+            if num < n + 1:
+                nums[num-1] = -abs(nums[num-1])
+        for i in range(n):
+            if nums[i] > 0:
+                return i + 1
+        return n + 1
+
+
+s = Solution()
+s.firstMissingPositive(nums = [7,8,9,11,12])
+
+
+
 
 
 

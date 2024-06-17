@@ -99,7 +99,7 @@ class Solution:
         return ans
 
 
-# 大根堆On²
+# 大根堆Onlogn
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         n = len(nums)
