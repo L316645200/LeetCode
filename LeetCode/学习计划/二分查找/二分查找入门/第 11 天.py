@@ -22,7 +22,7 @@ class Solution:
                 ans = max(ans, right - i)
         return ans
 
+
 s = Solution()
 s.maxDistance(nums1 = [55,30,5,4,2], nums2 = [100,20,10,10,5])
 
-# 33. 搜索旋转排序数组

@@ -190,10 +190,82 @@ prerequisites[i].length == 2
 0 <= ai, bi < numCourses
 prerequisites[i] 中的所有课程对 互不相同
 """
+
+
+# class Solution:
+#     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+#         edges = collections.defaultdict(list)
+#         visited = [0] * numCourses
+#         for u, v in prerequisites:
+#             edges[u].append(v)
+#         print(edges)
+#
+#         def dfs(x: int):
+#             mark = True
+#             if visited[x] == 1:
+#                 mark = False
+#             elif visited[x] == 0:
+#                 visited[x] = 1
+#                 for y in edges[x]:
+#                     if not dfs(y):
+#                         mark = False
+#             visited[x] = 2
+#             return mark
+#
+#         for i in range(numCourses):
+#             if i in edges and not dfs(i):
+#                 return False
+#         return True
+
+
+class Solution:
+    # 深度优先搜索
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        edges = collections.defaultdict(list)
+        visited = [0] * numCourses
+        for u, v in prerequisites:
+            edges[u].append(v)
+
+        def dfs(u: int):
+            mark = True
+            visited[u] = 1
+            for v in edges[u]:
+                if visited[v] == 0:
+                    if not dfs(v):
+                        mark = False
+                elif visited[v] == 1:
+                    mark = False
+            visited[u] = 2
+            return mark
+
+        for i in range(numCourses):
+            if i in edges and not dfs(i):
+                return False
+        return True
+
+
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        ...
+        edges = collections.defaultdict(list)
+        indeg = [0] * numCourses
+
+        for u, v in prerequisites:
+            edges[v].append(u)
+            indeg[u] += 1
+
+        deq = collections.deque([u for u in range(numCourses) if indeg[u] == 0])
+        cnt = 0
+        while deq:
+            u = deq.popleft()
+            for v in edges[u]:
+                indeg[v] -= 1
+                if indeg[v] == 0:
+                    deq.append(v)
+            cnt += 1
+
+        return cnt == numCourses
 
 
 s = Solution()
-s.canFinish(numCourses = 2, prerequisites = [[1,0],[0,1]])
+s.canFinish(numCourses = 2, prerequisites = [[1,0]])

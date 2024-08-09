@@ -77,8 +77,8 @@ class Solution:
                     left = mid + 1
             return ans
 
-        left = binary_search(nums, target, False)
-        right = binary_search(nums, target, True) - 1
+        left = binary_search(nums, target, True)
+        right = binary_search(nums, target, False) - 1
         if left <= right and  right < len(nums) and nums[left] == target == nums[right]:
             return [left, right]
         return [-1, -1]

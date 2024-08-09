@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# @File    ：20240617_522. 最长特殊序列 II.py
+# @File    ：20240617_522. 最长特殊序列 II[mid].py
 # @Author  ：Lin
 # @Date    ：2024/6/17 10:20
 
