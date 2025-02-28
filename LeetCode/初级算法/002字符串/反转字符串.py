@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 反转字符串.py
+# @File  : 344.反转字符串.py
 # @Author: Lin
 # @Date  : 2021/7/10 11:31
 # 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
@@ -23,6 +23,8 @@
 # 递归
 # 双指针
 # 字符串
+from typing import List
+
 
 class Solution:
     def reverseString(self, s: List[str]) -> None:

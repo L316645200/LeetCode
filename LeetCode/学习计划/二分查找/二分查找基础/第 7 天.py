@@ -130,8 +130,8 @@ class Solution:
                 mi = min(mi, b - diff)
         return (total + mi) % (10 ** 9 + 7)
 
-s = Solution()
-s.minAbsoluteSumDiff(nums1 = [1,10,4,4,2,7], nums2 = [9,3,5,1,7,4])
+# s = Solution()
+# s.minAbsoluteSumDiff(nums1 = [1,10,4,4,2,7], nums2 = [9,3,5,1,7,4])
 
 
 

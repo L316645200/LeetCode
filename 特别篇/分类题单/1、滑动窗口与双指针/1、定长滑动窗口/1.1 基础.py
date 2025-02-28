@@ -3,7 +3,7 @@
 # @File    ：1.1 基础.py
 # @Author  ：Lin
 # @Date    ：2024/9/9 16:53
-
+"""https://leetcode.cn/circle/discuss/0viNMK/"""
 """1456. 定长子串中元音的最大数目 1263
 给你字符串 s 和整数 k 。
 请返回字符串 s 中长度为 k 的单个子字符串中可能包含的最大元音字母数。

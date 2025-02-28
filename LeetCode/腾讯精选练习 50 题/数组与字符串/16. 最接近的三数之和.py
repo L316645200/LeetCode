@@ -43,6 +43,57 @@ class Solution:
         return res
 
 
-s = Solution()
-res = s.threeSumClosest([0,1,2], 0)
-print(res)
+# s = Solution()
+# res = s.threeSumClosest([0,1,2], 0)
+# print(res)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

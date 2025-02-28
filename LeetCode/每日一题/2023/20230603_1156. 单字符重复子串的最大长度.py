@@ -48,23 +48,23 @@ class Solution:
                 t += cut[i + 2][1]
             res = max(res, min(t, cnt[cut[i][0]]))
         return res
-class Solution:
-    def maxRepOpt1(self, text: str) -> int:
-        cnt = Counter(text)
-        n = len(text)
-        res = 0
-        i = 0
-        while i < n:
-            j = i + 1
-            while j < n and text[i] == text[j]:
-                j += 1
-            res = max(res, j - i)
-            k = j + 1
-            while k < n and text[i] == text[k]:
-                k += 1
-            res = max(res, min(k - i, cnt[text[i]]))
-            i = j
-        return res
+# class Solution:
+#     def maxRepOpt1(self, text: str) -> int:
+#         cnt = Counter(text)
+#         n = len(text)
+#         res = 0
+#         i = 0
+#         while i < n:
+#             j = i + 1
+#             while j < n and text[i] == text[j]:
+#                 j += 1
+#             res = max(res, j - i)
+#             k = j + 1
+#             while k < n and text[i] == text[k]:
+#                 k += 1
+#             res = max(res, min(k - i, cnt[text[i]]))
+#             i = j
+#         return res
 
 s = Solution()
 s.maxRepOpt1(text = "aaabbaaa")

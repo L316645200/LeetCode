@@ -142,8 +142,6 @@ n == height.length
 1 <= n <= 2 * 104
 0 <= height[i] <= 105"""
 
-
-
 """对于下标 i，下雨后水能到达的最大高度等于下标i 两边的最大高度的最小值，
 下标 i 处能接的雨水量等于下标 i处的水能到达的最大高度减去 height[i]
 """
@@ -168,8 +166,8 @@ class Solution:
                 res += right_max - height[right]
         return res
 
-s = Solution()
-s.trap(height = [0,1,0,2,1,0,1,3,2,1,2,1])
+# s = Solution()
+# s.trap(height = [0,1,0,2,1,0,1,3,2,1,2,1])
 
 
 
