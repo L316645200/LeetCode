@@ -526,7 +526,8 @@ print(2 ^ 2)
 for i in range(20):
     print(i, i & - i)
 
-
+print(24|9)
+print(12|18)
 
 
 
