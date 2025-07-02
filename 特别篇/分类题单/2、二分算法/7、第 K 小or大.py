@@ -11,6 +11,7 @@
 部分题目也可以用堆解决。
 """
 import bisect
+import heapq
 import math
 from typing import List
 
@@ -349,12 +350,42 @@ https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/description/"""
 
 class Solution:
     def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
-        ...
+        ans = []
+        h = [(nums1[i] + nums2[0], i, 0) for i in range(min(len(nums1), k))]
+        for _ in range(k):
+            __, i, j = heapq.heappop(h)
+            ans.append([nums1[i], nums2[j]])
+            if j < len(nums2) - 1:
+                heapq.heappush(h, (nums1[i] + nums2[j + 1], i, j + 1))
+        return ans
 
 
-s = Solution()
-s.kSmallestPairs(nums1 = [1,7,11], nums2 = [2,4,6], k = 3)
+class Solution:
+    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+        ans = []
+        h = [(nums1[0] + nums2[0], 0, 0)]
+        for _ in range(k):
+            __, i, j = heapq.heappop(h)
+            ans.append([nums1[i], nums2[j]])
+            if j == 0 and i < len(nums1) - 1:
+                heapq.heappush(h, (nums1[i + 1] + nums2[0], i + 1, 0))
+            if j < len(nums2) - 1:
+                heapq.heappush(h, (nums1[i] + nums2[j + 1], i, j + 1))
+        return ans
 
+
+# s = Solution()
+# s.kSmallestPairs(nums1 = [1,7,11], nums2 = [2,4,6], k = 3)
+
+
+# TODO
+"""1439. 有序矩阵中的第 k 个最小数组和 2134
+786. 第 K 个最小的质数分数 2169
+3116. 单面值组合的第 K 小金额 2387
+3134. 找出唯一性数组的中位数 2451
+2040. 两个有序数组的第 K 小乘积 2518
+2386. 找出数组的第 K 大和 2648 转化
+1508. 子数组和排序后的区间和 思考：二分做法"""
 
 
 

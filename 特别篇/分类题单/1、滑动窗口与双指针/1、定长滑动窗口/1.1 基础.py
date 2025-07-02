@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# @File    ：1.1 基础.py
+# @File    ：1、单调栈.py
 # @Author  ：Lin
 # @Date    ：2024/9/9 16:53
 """https://leetcode.cn/circle/discuss/0viNMK/"""
